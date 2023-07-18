@@ -62,27 +62,24 @@ bool isWin(char board[SIZE][SIZE], char symbol)
     // Проверка горизонталей и вертикалей
     for (int i = 0; i < SIZE; i++)
     {
-        // Горизонтальная линия
         if (board[i][0] == symbol && board[i][1] == symbol && board[i][2] == symbol)
         {
-            return true;
+            return true; // Горизонтальная линия
         }
-        // Вертикальная линия
+
         if (board[0][i] == symbol && board[1][i] == symbol && board[2][i] == symbol)
         {
-            return true;
+            return true; // Вертикальная линия
         }
     }
 
     // Диоганальная линия
-    if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != ' ')
+    if ((board[0][0] == symbol && board[1][1] == symbol && board[2][2] == symbol) ||
+        (board[0][2] == symbol && board[1][1] == symbol && board[2][0] == symbol))
     {
-        return true;
+        return true; // Диагональные линии
     }
-    if (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != ' ')
-    {
-        return true;
-    }
+
     return false;
 }
 
